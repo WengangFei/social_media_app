@@ -1,1 +1,3 @@
 # social_media_app
+start to build this social app today.
+stay in focusing.....
