@@ -1,12 +1,33 @@
+import AuthLayout from './_auth/authLayout';
+import SigninForm from './_auth/forms/signinForm';
+import SignupForm from './_auth/forms/signupForm';
+import { Home } from './_root/pages';
+import RootLayout from './_root/rootLayout';
 import './globals.css';
+import { Routes, Route } from 'react-router-dom';
+
+
 
 function App() {
  
 
   return (
-    <h1 className="text-3xl font-bold underline">
-    Fei
-  </h1>
+    <main className='flex h-screen'>
+      <Routes>
+        {/* public routes */}
+        <Route element={ <AuthLayout /> }>
+          <Route path='/sign-in' element={<SigninForm />}/>
+          <Route path='/sign-up' element={<SignupForm />}/>
+        </Route>
+        
+
+        {/* private routes */}
+        <Route element={<RootLayout />}>
+          <Route index element={<Home />}/>
+        </Route>
+        
+      </Routes>
+    </main>
       
   )
 }

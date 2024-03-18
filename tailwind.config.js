@@ -15,7 +15,7 @@
 /** @type {import('tailwindcss').Config} */
 const defaultTheme = import('tailwindcss/defaultTheme')
 
-module.exports = {
+export default {
   darkMode: ['class'],
   content: [
     './index.html',
@@ -30,6 +30,7 @@ module.exports = {
       padding: '2rem',
       screens: {
         '2xl': '1400px',
+        tablet:'690px',
       },
     },
     extend: {
