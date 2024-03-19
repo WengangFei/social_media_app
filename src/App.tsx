@@ -1,6 +1,7 @@
 import AuthLayout from './_auth/authLayout';
-import SigninForm from './_auth/forms/signinForm';
-import SignupForm from './_auth/forms/signupForm';
+// import SigninForm from './_auth/forms/signinForm';
+// import SignupForm from './_auth/forms/signupForm';
+import { SigninForm, SignupForm } from './_auth/forms'; 
 import { Home } from './_root/pages';
 import RootLayout from './_root/rootLayout';
 import './globals.css';
