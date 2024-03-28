@@ -14,6 +14,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { signupValidation } from "@/lib/validation";
 import { z } from 'zod';
+import Loader from "@/shared/loader";
 
 
 
@@ -37,6 +38,7 @@ function SignupForm() {
     console.log(values)
   }
 
+  let isLoading = true;
 
   return (
     <Form {...form}>
@@ -44,24 +46,70 @@ function SignupForm() {
         <img src='/assets/images/logo.svg' alt='signUp-logo'/>
         <h2 className="h3-bold md:h2-bold pt-5 sm:pt-12">Create a new Account</h2>
       </div>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="flex-center flex-col gap-5 w-full mt-5">
         <FormField
           control={form.control}
-          name="username"
+          name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Username</FormLabel>
+              <FormLabel>Name</FormLabel>
               <FormControl>
-                <Input placeholder="shadcn" {...field} />
-              </FormControl>
-              <FormDescription>
-                This is your public display name.
-              </FormDescription>
-              <FormMessage />
+                <Input type='text' className="shad-input" {...field} />
+              </FormControl>  
+              
+              <FormMessage /> 
             </FormItem>
           )}
         />
-        <Button type="submit">Submit</Button>
+
+<FormField
+          control={form.control}
+          name="name"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>User Name</FormLabel>
+              <FormControl>
+                <Input type='text' className="shad-input" {...field} />
+              </FormControl>  
+              
+              <FormMessage /> 
+            </FormItem>
+          )}
+        />
+
+<FormField
+          control={form.control}
+          name="name"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Email</FormLabel>
+              <FormControl>
+                <Input type='text' className="shad-input" {...field} />
+              </FormControl>  
+              
+              <FormMessage /> 
+            </FormItem>
+          )}
+        />
+
+<FormField
+          control={form.control}
+          name="name"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Password</FormLabel>
+              <FormControl>
+                <Input type='text' className="shad-input" {...field} />
+              </FormControl>  
+              
+              <FormMessage /> 
+            </FormItem>
+          )}
+        />
+
+        <Button className='shad-button_primary' type="submit">
+          {isLoading ? (<div className="flex-center gap-2"><Loader /> Loading....</div>) : 'Sign Up'}
+        </Button>
       </form>
     </Form>
   )
