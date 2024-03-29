@@ -5,7 +5,6 @@ import { useForm } from "react-hook-form";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -15,6 +14,7 @@ import { Input } from "@/components/ui/input";
 import { signupValidation } from "@/lib/validation";
 import { z } from 'zod';
 import Loader from "@/shared/loader";
+import { Link } from "react-router-dom";
 
 
 
@@ -38,7 +38,7 @@ function SignupForm() {
     console.log(values)
   }
 
-  let isLoading = true;
+  let isLoading = false;
 
   return (
     <Form {...form}>
@@ -62,7 +62,7 @@ function SignupForm() {
           )}
         />
 
-<FormField
+        <FormField
           control={form.control}
           name="name"
           render={({ field }) => (
@@ -77,7 +77,7 @@ function SignupForm() {
           )}
         />
 
-<FormField
+        <FormField
           control={form.control}
           name="name"
           render={({ field }) => (
@@ -92,7 +92,7 @@ function SignupForm() {
           )}
         />
 
-<FormField
+        <FormField
           control={form.control}
           name="name"
           render={({ field }) => (
@@ -108,8 +108,17 @@ function SignupForm() {
         />
 
         <Button className='shad-button_primary' type="submit">
-          {isLoading ? (<div className="flex-center gap-2"><Loader /> Loading....</div>) : 'Sign Up'}
+          {isLoading ? 
+          (<div className="flex-center gap-2"><Loader /> Loading....</div>) 
+          : 'Sign Up'}
         </Button>
+
+        <p>
+          Already have an account? 
+          <Link to='/sign-in' className="ml-4 text-primary-500 font-bold text-xl">
+            Log In
+          </Link>
+        </p>
       </form>
     </Form>
   )
