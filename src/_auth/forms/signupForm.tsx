@@ -15,11 +15,16 @@ import { signupValidation } from "@/lib/validation";
 import { z } from 'zod';
 import Loader from "@/shared/loader";
 import { Link } from "react-router-dom";
+import { createUserAccount } from "@/lib/appwrite/api";
+
+
+
+
 
 
 
 function SignupForm() {
-
+  
   // 1. Define your form.
   const form = useForm<z.infer<typeof signupValidation>>({
     resolver: zodResolver(signupValidation),
@@ -32,10 +37,9 @@ function SignupForm() {
   })
  
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof signupValidation>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values)
+  async function onSubmit(values: z.infer<typeof signupValidation>) {
+    const newUser = await createUserAccount(values);
+    console.log(newUser)
   }
 
   let isLoading = false;
@@ -64,7 +68,7 @@ function SignupForm() {
 
         <FormField
           control={form.control}
-          name="name"
+          name="username"
           render={({ field }) => (
             <FormItem>
               <FormLabel>User Name</FormLabel>
@@ -79,7 +83,7 @@ function SignupForm() {
 
         <FormField
           control={form.control}
-          name="name"
+          name="email"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Email</FormLabel>
@@ -94,7 +98,7 @@ function SignupForm() {
 
         <FormField
           control={form.control}
-          name="name"
+          name="password"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Password</FormLabel>
